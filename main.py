@@ -38,7 +38,7 @@ def download():
     filename = ''.join(filter(str.isdigit, filename))
     for letter in filename:
         if  letter.isalpha():
-            flash("bas yala mesh hata3raf ta3mel download lel main.py", category="error")
+            flash("Stop trying to download server files you sneaky sneaky.", category="error")
             break
 
     @after_this_request 
