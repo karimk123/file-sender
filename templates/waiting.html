@@ -1,0 +1,46 @@
+{%extends "index.html"%}
+
+{%block title%} Waiting for download {%endblock%}
+{%block content%} 
+
+<h3   style="color:white;font-size:5vw;margin-top:-100px; text-shadow:10px 10px 40px black"> Code: {{fileNameCode}}</h3>
+<br>
+<br>
+<br>
+<h5 id="top-txt"style="color:white;font-size:4vw;" >Waiting to download <span>{{filename}}</span>.</h5>
+<br>
+<h5 id="directLinkTxt" style="color:white; font-size:2vw" >Direct download link: <span onclick="window.location.href = '/file/{{fileNameCode}}'"  >https://file-sender.karimk123.repl.co/file/{{fileNameCode}}</span> </h5>
+<script>
+    let codeChecker = setInterval(function checkCode(){
+        fetch("/check_code=" + {{fileNameCode}}, {
+        method: "GET"
+    
+  }).then((response) => {
+    return response.json()
+  }).then(function (data) {
+      result = JSON.parse(data)
+    console.log(result) 
+      if(result == "does not exist"){
+          document.getElementById("top-txt").innerHTML = "Downloaded!"
+          document.getElementById("directLinkTxt").remove()
+          clearInterval(codeChecker)
+      }
+  })
+    }, 1000)
+</script>
+
+<style>
+span{
+    color:darkblue;
+    text-shadow:10px 10px 40px black
+}
+
+#directLinkTxt span:hover{
+    text-decoration:underline;
+    cursor:pointer;
+
+}
+{%endblock%} 
+
+</style>
+</html>

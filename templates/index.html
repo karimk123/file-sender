@@ -1,0 +1,114 @@
+<html>
+<head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ <script src="/static/script.js"></script>
+ <link rel="stylesheet" href="/static/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="/static/file-sender-icon.ico">
+
+<title>{%block title%}File Sender{%endblock%}</title> 
+</head>
+<body>
+ 
+        
+<div class="area" >
+   
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+<div>
+  
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {%if messages%}
+  {% for category, message in messages%}
+  {%if category == "error"%}
+  <div class="alert alert-danger alert-dismissable fade show">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert" onclick="document.getElementsByClassName('alert alert-danger alert-dismissable fade show')[0].style.display='none';">
+      <span aria-hidden="true" >&times;</span>
+      </button>
+    </div>
+    {%else%} 
+    <div class="alert alert-success alert-dismissable fade show">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {%endif%}
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+</div>
+    </div >
+
+
+<div class="context">
+{%block content%}
+<div class="action-area">
+
+    <img src="/static/file-sender-banner.png" id="bannerImg">
+    <br>
+    <br>
+    <br>
+
+
+<form method="POST" action="/upload" style="display: none;"  enctype = "multipart/form-data">
+<label class="form-label" for="customFile">Select a file to upload</label>
+<input type="file" name="file" class="form-control" id="customFile" required />
+
+
+<button id="upload-btn" type="submit" onclick="if(document.getElementById('customFile').value){this.innerHTML = 'Uploading...'}" class="btn btn-danger">Upload</button>
+</form>
+
+<form style="display: block;" method="POST" action="/download">
+
+    <input  name="filename" type="tele"  id="filename" maxlength=5 oninput='javascript: if (this.value.length >= this.maxLength) {this.value = this.value.slice(0, this.maxLength); document.getElementById("download-btn").disabled = false;} else{document.getElementById("download-btn").disabled = true;}' placeholder="Enter code"class="form-control" autocomplete="off" required>
+<input disabled value="Download" onclick="SubmitDownload()" type="button" id="download-btn" class="btn btn-primary">
+
+
+</form>
+<!--
+{%if fileNotFound%}
+<br>
+<hr>
+<br>
+<h3>File not found.</h3>
+{%endif%}
+-->
+<button onclick="Switch()" id="sender-switch" class="btn btn-primary">Swtich to sender</button>
+</div>
+
+    <ul class="question-btn" id="helpBtn">
+      <li class="question-btn-li"><a href="javascript:Help()"><i class="fa fa-question" aria-hidden="false" style="margin-top:15px;"></i></a></li>
+    </ul>
+    <ul class="question-btn" id="infoBtn" style="position:fixed;left:10px;bottom:2%;right:100%;">
+      <li class="question-btn-li"><a href="javascript:Info()"><i class="fa fa-info" aria-hidden="false" style="margin-top:15px;"></i></a></li>
+    </ul>
+
+
+
+
+{%endblock%}
+</div>
+</body>
+</html>
+
