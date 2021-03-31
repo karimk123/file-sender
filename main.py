@@ -44,7 +44,7 @@ def download():
     @after_this_request 
     def remove_file(response): 
         for letter in filename:
-            if not letter.isalpha:
+            if not letter.isalpha():
                 return response
 
        
