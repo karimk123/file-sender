@@ -8,7 +8,7 @@
 
  - All files formats are supported.
  - Site is open source and completely free!
- - No size limit for files 
+ - No ads! 
  - Files never expire before download
 
 ## How to send a file
