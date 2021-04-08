@@ -76,7 +76,7 @@
 <input type="file" name="file" class="form-control" id="customFile" required />
 
 
-<button id="upload-btn" type="submit" onclick="if(document.getElementById('customFile').value){this.innerHTML = 'Uploading...'}" class="btn btn-danger">Upload</button>
+<button id="upload-btn" type="submit" onclick="if(document.getElementById('customFile').value){this.innerHTML = 'Uploading...';this.disabled = true}" class="btn btn-danger">Upload</button>
 </form>
 
 <form style="display: block;" method="POST" action="/download">
