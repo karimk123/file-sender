@@ -61,7 +61,7 @@ function Help(){
     $("#infoBtn").fadeOut(200)
 
     let helpDiv = document.createElement("div")
-    helpDiv.innerHTML = '<br> <br> <img src="/static/howto.jpg" style="width:100%; height:auto"><br><br><br><br>'
+    helpDiv.innerHTML = '<br> <br> <img src="/static/howto.jpg" draggable="false" style="width:100%; height:auto"><br><br><br><br>'
     helpDiv.id = "help"
     document.body.appendChild(helpDiv)
 
@@ -91,7 +91,7 @@ function BackFromHelp(){
 function Info(){
 
 
-    document.getElementsByClassName("context")[0].innerHTML += '<div id="info" style="background-color:#4e54c8"> <img class="socials" src="/static/githubicon.png" height="30px;" onclick="window.open(\'https://github.com/karimk123/file-sender\', \'_blank\') "> <img src="/static/discordicon.png" class="socials"  height="30px;" onclick="window.open(\'https://discord.gg/YawhqQYBn8\', \'_blank\') "> <img class="socials" src="/static/twittericon.png" height="30px;"><p style = "color:white;">Made by kimo</p></div>'
+    document.getElementsByClassName("context")[0].innerHTML += '<div id="info" style="background-color:#4e54c8"> <img class="socials" draggable="false" src="/static/githubicon.png" height="30px;" onclick="window.open(\'https://github.com/karimk123/file-sender\', \'_blank\') "> <img draggable="false" src="/static/discordicon.png" class="socials"  height="30px;" onclick="window.open(\'https://discord.gg/YawhqQYBn8\', \'_blank\') "> <img draggable="false" class="socials" src="/static/twittericon.png" height="30px;"><p style = "color:white;">Made by kimo</p></div>'
 
 
    
